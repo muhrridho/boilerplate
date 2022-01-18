@@ -1,0 +1,50 @@
+@font-face {
+  font-family: 'Effra';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('~assets/fonts/Effra-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Effra';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('~assets/fonts/Effra-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Effra';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('~assets/fonts/Effra-Medium.ttf') format('truetype');
+}
+
+[type='text'],
+[type='email'],
+[type='url'],
+[type='password'],
+[type='number'],
+[type='date'],
+[type='datetime-local'],
+[type='month'],
+[type='search'],
+[type='tel'],
+[type='time'],
+[type='week'],
+[multiple],
+textarea,
+select {
+  @apply border-ui-shade-20;
+
+  &:focus {
+    @apply outline-none;
+    @apply border-ui-primary;
+    @apply ring-ui-primary;
+  }
+  &::placeholder {
+    @apply text-ui-shade-40;
+  }
+}
