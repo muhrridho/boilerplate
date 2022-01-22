@@ -26,7 +26,7 @@ export default {
   components: false,
 
   server: {
-    port: '5000',
+    port: '3100',
   },
   ssr: false,
 
@@ -43,7 +43,6 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
   ],
-
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {

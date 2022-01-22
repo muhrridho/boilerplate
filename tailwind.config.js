@@ -5,31 +5,38 @@ module.exports = {
     extend: {
       colors: {
         ui: {
-          primary         : '#e62121',
-          'primary-light' : '#f23333',
-          'primary-dark'  : '#b50e0e',
+          primary: '#7fd1b5',
+          'primary-light': '#8dd9bf',
+          'primary-dark': '#73c9ad',
+          'primary-lightest': '#f0fffa',
 
-          secondary       : '#e62121',
+          secondary: '#f8b053',
 
-          white           : '#fff',
-          black           : '#000',
-          
+          white: '#fff',
+          black: '#000',
+
           // black & white shades
-          'shade-100'     : '#333', // darker
-          'shade-80'      : '#666',
-          'shade-60'      : '#999',
-          'shade-40'      : '#bbb',
-          'shade-20'      : '#ddd',
-          'shade-0'       : '#eaeaea', // lighter
+          'shade-100': '#333', // darker
+          'shade-80': '#666',
+          'shade-60': '#999',
+          'shade-40': '#bbb',
+          'shade-20': '#ddd',
+          'shade-0': '#f7f7f7', // lighter
 
           // semantic
-          success         : '#7ed321',
-          warning         : '#ffede8',
-          error           : '#fc4158',
+          success: '#23baa6',
+          warning: '#ffc144',
+          error: '#fc4158',
 
           // color
-          red             : '#ff0000'
-        }
+          red: '#ff0000',
+        },
+      },
+      width: {
+        'fit-content': 'fit-content',
+      },
+      boxShadow: {
+        ui: '0 0 10px 1px #ededed',
       },
     },
     fontFamily: {
@@ -37,7 +44,13 @@ module.exports = {
     },
   },
   purge: {
-    content: ['./components/**/*.{vue,js}', './layouts/**/*.vue', './pages/**/*.vue', './plugins/**/*.{js,ts}', './nuxt.config.{js,ts}'],
+    content: [
+      './components/**/*.{vue,js}',
+      './layouts/**/*.vue',
+      './pages/**/*.vue',
+      './plugins/**/*.{js,ts}',
+      './nuxt.config.{js,ts}',
+    ],
     options: {
       safelist: [],
     },

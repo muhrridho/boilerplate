@@ -44,7 +44,7 @@ export default {
   name: 'BSwitch',
   inheritAttrs: false,
   model: {
-    props: 'value',
+    prop: 'value',
     event: 'change',
   },
   props: {

@@ -1,9 +1,9 @@
 <template>
   <div class="flex">
     <input
+      :id="id"
       v-model="_value"
       v-bind="$attrs"
-      :id="id"
       :disabled="_disabled"
       :true-value="trueValue"
       :false-value="falseValue"
@@ -34,7 +34,7 @@ export default {
   name: 'BCheckbox',
   inheritAttrs: false,
   model: {
-    props: 'value',
+    prop: 'value',
     event: 'change',
   },
   props: {
@@ -47,6 +47,7 @@ export default {
       default: '',
     },
     value: {
+      type: [Boolean, String, Number],
       required: true,
     },
     disabled: {
@@ -54,9 +55,11 @@ export default {
       default: false,
     },
     trueValue: {
+      type: [Boolean, String, Number],
       default: true,
     },
     falseValue: {
+      type: [Boolean, String, Number],
       default: false,
     },
   },

@@ -28,7 +28,7 @@
 export default {
   name: 'BSelect',
   model: {
-    props: 'value',
+    prop: 'value',
     event: 'change',
   },
   props: {

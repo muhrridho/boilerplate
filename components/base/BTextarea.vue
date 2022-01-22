@@ -1,7 +1,7 @@
 <template>
   <textarea
     v-model="_value"
-    class="w-full py-2 min-h-[68px] rounded-md"
+    class="b-textarea w-full py-2 min-h-[68px] rounded-md"
     :class="[_disabled && 'bg-ui-shade-0 cursor-not-allowed']"
   ></textarea>
 </template>
@@ -10,7 +10,7 @@
 export default {
   name: 'BTextarea',
   model: {
-    props: 'value',
+    prop: 'value',
     event: 'change',
   },
   props: {

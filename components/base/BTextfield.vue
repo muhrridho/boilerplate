@@ -3,14 +3,14 @@
     <div
       v-if="prefix || $slots.prefix"
       ref="prefix"
-      class="absolute inset-y-0 px-2 pt-[1px] left-1 flex items-center justify-center font-bold"
+      class="absolute inset-y-0 px-3 pt-[1px] left-0 flex items-center justify-center font-bold"
     >
       <slot name="prefix">{{ prefix }}</slot>
     </div>
     <input
       v-bind="$attrs"
+      ref="inputElm"
       v-model="_value"
-      v-on="inputListeners"
       :type="_type === 'number' ? 'text' : _type"
       :class="[
         size === 'small' && 'h-[38px]',
@@ -18,28 +18,29 @@
         size === 'large' && 'h-[48px]',
 
         _disabled && 'bg-ui-shade-0 cursor-not-allowed',
+        ...inputClass,
       ]"
       class="w-full px-3 p-0 rounded-md"
-      ref="inputElm"
+      v-on="inputListeners"
     />
     <div
-      v-if="type === 'password'"
-      class="absolute right-2 top-[50%] translate-y-[-50%] cursor-pointer"
-      @click="isPasswordRevealed = !isPasswordRevealed"
-    >
-      <IconEye
-        :class="[
-          isPasswordRevealed && 'text-ui-primary',
-          !isPasswordRevealed && 'text-ui-shade-40',
-        ]"
-      />
-    </div>
-    <div
-      v-if="suffix || $slots.suffix"
+      v-if="suffix || $slots.suffix || type === 'password'"
       ref="suffix"
-      class="absolute inset-y-0 right-1 flex items-center justify-center font-bold"
+      class="absolute inset-y-0 px-3 right-0 flex items-center justify-center font-bold"
     >
-      <slot name="suffix">{{ suffix }}</slot>
+      <button
+        v-if="type === 'password'"
+        @click="isPasswordRevealed = !isPasswordRevealed"
+      >
+        <IconEye
+          :class="[
+            isPasswordRevealed && 'text-ui-primary',
+            !isPasswordRevealed && 'text-ui-shade-40',
+          ]"
+          class="ml-1 cursor-pointer"
+        />
+      </button>
+      <slot v-else name="suffix">{{ suffix }}</slot>
     </div>
   </div>
 </template>
@@ -52,7 +53,7 @@ export default {
   components: { IconEye },
   inheritAttrs: false,
   model: {
-    props: 'value',
+    prop: 'value',
     event: 'change',
   },
   props: {
@@ -80,6 +81,10 @@ export default {
     suffix: {
       type: String,
       default: null,
+    },
+    inputClass: {
+      type: Array,
+      default: () => [],
     },
   },
   data: () => ({
@@ -117,11 +122,13 @@ export default {
   },
   mounted() {
     if (this.$slots.prefix || this.prefix) {
-      this.$refs.inputElm.style.paddingLeft = `${this.$refs.prefix.clientWidth}px`
+      this.$refs.inputElm.style.paddingLeft = `${
+        this.$refs.prefix.clientWidth - 8
+      }px`
     }
-    if (this.$slots.suffix || this.suffix) {
+    if (this.$slots.suffix || this.suffix || this.type === 'password') {
       this.$refs.inputElm.style.paddingRight = `${
-        this.$refs.suffix.clientWidth + 8
+        this.$refs.suffix.clientWidth - 8
       }px`
     }
   },

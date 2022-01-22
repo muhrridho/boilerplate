@@ -1,5 +1,5 @@
 <template>
-  <div class="b-field">
+  <div class="b-field" :class="[error && 'b-field--error']">
     <label v-if="label" :for="targetId" class="font-bold text-sm mb-1 block">
       {{ label }}
       <span v-if="required" class="text-ui-red">*</span>
@@ -48,3 +48,12 @@ export default {
   },
 }
 </script>
+<style lang="scss" scoped>
+.b-field.b-field--error ::v-deep {
+  .b-textfield input,
+  .b-select,
+  .b-textarea {
+    @apply border-ui-red;
+  }
+}
+</style>

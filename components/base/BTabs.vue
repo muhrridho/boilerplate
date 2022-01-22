@@ -1,6 +1,9 @@
 <template>
-  <div class="b-tab flex">
-    <ul class="b-tab__menu">
+  <div class="b-tab flex" :class="[isVertical && 'flex-col']">
+    <ul
+      class="b-tab__menu"
+      :class="[isVertical && 'flex border-b-2 border-ui-shade-40']"
+    >
       <li
         v-for="tab in tabs"
         :key="`menu-${kebabCase(tab)}`"
@@ -9,9 +12,14 @@
       >
         <a
           :href="`#${kebabCase(tab)}`"
-          :style="`width: ${menuWidth}`"
-          :class="[vmActiveTab === tab && 'text-ui-primary']"
-          class="b-tab__menu-link h-[48px] px-4 flex items-center font-medium hover:bg-ui-shade-0"
+          :class="[
+            isActive(tab) && '!text-ui-primary',
+            isVertical &&
+              'px-10 border-b-[3px] border-transparent mb-[-2px] text-center',
+            isVertical && isActive(tab) && 'text-ui-primary border-ui-primary',
+            ...menuClass,
+          ]"
+          class="b-tab__menu-link block px-4 py-2 m-0 font-medium text-ui-shade-60 hover:text-ui-shade-80"
           @click.prevent="onMenuClick(tab)"
           >{{ tab }}</a
         >
@@ -24,7 +32,7 @@
         :class="`b-tab__content--${kebabCase(tab)}`"
         class="b-tab__content"
       >
-        <slot v-if="vmActiveTab === tab" :name="tab"></slot>
+        <slot v-if="isActive(tab)" :name="tab"></slot>
       </div>
     </div>
   </div>
@@ -44,14 +52,28 @@ export default {
       type: String,
       default: null,
     },
-    menuWidth: {
+    direction: {
       type: String,
-      default: 'auto',
+      default: 'horizontal',
+      validator: (value) => ['horizontal', 'vertical'].includes(value),
+    },
+    menuClass: {
+      type: Array,
+      default: () => [],
+    },
+    withHash: {
+      type: Boolean,
+      default: false,
     },
   },
   data: () => ({
     vmActiveTab: null,
   }),
+  computed: {
+    isVertical() {
+      return this.direction === 'vertical'
+    },
+  },
   watch: {
     activeTab: {
       handler() {
@@ -61,10 +83,18 @@ export default {
       immediate: true,
     },
   },
+  mounted() {
+    if (this.withHash && window.location.hash)
+      this.vmActiveTab = `${window.location.hash}`.replace('#', '')
+  },
   methods: {
+    isActive(tab) {
+      return this.vmActiveTab === tab || this.vmActiveTab === kebabCase(tab)
+    },
     onMenuClick(newTab) {
       this.vmActiveTab = newTab
       this.$emit('change', newTab)
+      if (this.withHash) window.location.hash = `#${kebabCase(newTab)}`
     },
     kebabCase,
   },

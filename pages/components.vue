@@ -3,8 +3,10 @@
     <h1 class="text-4xl">Components Page</h1>
     <BTabs
       :tabs="componentsList"
+      :active-tab="componentsList[componentsList.length - 1]"
+      :with-hash="true"
+      direction="horizontal"
       class="mt-8"
-      :activeTab="componentsList[componentsList.length - 1]"
     >
       <div slot="BTextfield">
         <h2 class="text-2xl mb-4">BTextfield</h2>
@@ -52,7 +54,7 @@
               v-model="number2"
               placeholder="number with allowNegative"
               type="number"
-              :allowNegative="true"
+              :allow-negative="true"
             />
             <p>number with allowNegative {{ number2 }}</p>
           </div>
@@ -76,8 +78,8 @@
           </div>
           <div>
             <BTextfield v-model="value" placeholder="type: text" type="text">
-              <IconEye slot="suffix" />
-              <IconEye slot="prefix" />
+              <IconEye slot="prefix" class="mr-1" />
+              <IconEye slot="suffix" class="ml-1" />
             </BTextfield>
             <p>custom suffix & prefix</p>
           </div>
@@ -88,16 +90,37 @@
         <h2 class="text-2xl mb-4">BButton</h2>
         <div class="grid grid-cols-4 gap-4">
           <div>
-            <BButton>BButton</BButton>
+            <BButton class="w-full">BButton</BButton>
             <p>size: Large (default)</p>
           </div>
           <div>
-            <BButton size="medium" variant="naked">BButton</BButton>
+            <BButton class="w-full" size="medium">BButton</BButton>
             <p>size: medium</p>
           </div>
           <div>
-            <BButton size="small">BButton</BButton>
+            <BButton class="w-full" size="small">BButton</BButton>
             <p>size: small</p>
+          </div>
+          <div>
+            <BButton class="w-full" size="smaller">BButton</BButton>
+            <p>size: smaller</p>
+          </div>
+          <div>
+            <BButton>BButton</BButton>
+            <p>variant: primary (default)</p>
+          </div>
+          <div>
+            <BButton variant="primary-naked">BButton</BButton>
+            <p>variant: primary-naked</p>
+          </div>
+          <div>
+            <BButton variant="naked">BButton</BButton>
+            <p>variant: naked</p>
+          </div>
+
+          <div>
+            <BButton variant="ghost">BButton</BButton>
+            <p>variant: ghost</p>
           </div>
           <div>
             <BButton variant="naked">
@@ -107,24 +130,16 @@
             <p></p>
           </div>
           <div>
-            <BButton>BButton</BButton>
-            <p>variant: primary (default)</p>
-          </div>
-          <div>
-            <BButton variant="naked">BButton</BButton>
-            <p>variant: naked</p>
-          </div>
-          <div>
-            <BButton variant="ghost">BButton</BButton>
-            <p>variant: ghost</p>
-          </div>
-          <div>
             <BButton :loading="true">BButton</BButton>
             <p>loading: true</p>
           </div>
           <div>
             <BButton disabled>BButton</BButton>
             <p>disabled</p>
+          </div>
+          <div>
+            <BButton disabled variant="naked">BButton</BButton>
+            <p>disabled (naked)</p>
           </div>
           <div>
             <BButton href="#BButton-link">BButton</BButton>
@@ -211,18 +226,18 @@
         <div class="grid grid-cols-2 gap-4">
           <div>
             <BCheckbox
+              id="checkbox-1"
               v-model="checkboxValue"
               label="BCheckbox Example"
-              id="checkbox-1"
             />
             <p>value: {{ checkboxValue }}</p>
           </div>
           <div>
             <BCheckbox
-              v-model="checkboxValue2"
               id="checkbox-2"
-              trueValue="benar"
-              falseValue="salah"
+              v-model="checkboxValue2"
+              true-value="benar"
+              false-value="salah"
             >
               With Custom true/false value
             </BCheckbox>
@@ -230,9 +245,9 @@
           </div>
           <div>
             <BCheckbox
+              id="checkbox-3"
               v-model="checkboxValue"
               label="BCheckbox Disabled"
-              id="checkbox-3"
               disabled
             />
             <p>value: {{ checkboxValue }}</p>
@@ -245,18 +260,18 @@
         <div class="grid grid-cols-2 gap-4">
           <div>
             <BSwitch
+              id="checkbox-1"
               v-model="checkboxValue"
               label="BSwitch Example"
-              id="checkbox-1"
             />
             <p>value: {{ checkboxValue }}</p>
           </div>
           <div>
             <BSwitch
-              v-model="checkboxValue2"
               id="checkbox-2"
-              trueValue="benar"
-              falseValue="salah"
+              v-model="checkboxValue2"
+              true-value="benar"
+              false-value="salah"
             >
               With Custom true/false value
             </BSwitch>
@@ -264,9 +279,9 @@
           </div>
           <div>
             <BSwitch
+              id="checkbox-3"
               v-model="checkboxValue"
               label="BSwitch Disabled"
-              id="checkbox-3"
               disabled
             />
             <p>value: {{ checkboxValue }}</p>
@@ -278,10 +293,10 @@
         <h2 class="text-2xl mb-4">BField</h2>
         <div class="grid grid-cols-1 gap-4">
           <div>
-            <BField label="Bfield" targetId="bfield-1">
+            <BField label="Bfield" target-id="bfield-1">
               <BTextfield
-                v-model="value"
                 id="bfield-1"
+                v-model="value"
                 placeholder="lorem ipsum"
                 type="text"
               />
@@ -292,11 +307,11 @@
             <BField
               label="Bfield Required"
               :required="true"
-              targetId="bfield-2"
+              target-id="bfield-2"
             >
               <BTextfield
-                v-model="value"
                 id="bfield-2"
+                v-model="value"
                 placeholder="lorem ipsum"
                 type="text"
               />
@@ -308,7 +323,7 @@
             <BField
               label="Bfield Hint"
               hint="this is a hint"
-              targetId="bfield-3"
+              target-id="bfield-3"
             >
               <BTextarea
                 v-model="value"
@@ -323,7 +338,7 @@
             <BField
               label="Bfield Error"
               error="this is an error message"
-              targetId="bfield-4"
+              target-id="bfield-4"
             >
               <BSelect
                 v-model="select"
@@ -340,7 +355,18 @@
         <h2 class="text-2xl mb-4">BTabs</h2>
         <BTabs
           :tabs="['Lorem', 'Ipsum Dolor', 'Sit Amet']"
-          activeTab="Ipsum Dolor"
+          :menu-class="['w-[10px]']"
+          direction="vertical"
+          active-tab="Ipsum Dolor"
+        >
+          <div slot="Lorem">Lorem Content</div>
+          <div slot="Ipsum Dolor">Ipsum Dolor Content</div>
+          <div slot="Sit Amet">Sit Amet Content</div>
+        </BTabs>
+        <BTabs
+          :tabs="['Lorem', 'Ipsum Dolor', 'Sit Amet']"
+          active-tab="Ipsum Dolor"
+          class="mt-8"
         >
           <div slot="Lorem">Lorem Content</div>
           <div slot="Ipsum Dolor">Ipsum Dolor Content</div>
@@ -353,9 +379,9 @@
         <div class="">
           <BDialog
             :active.sync="isDialogActive"
-            :closeButton="true"
+            :close-button="true"
             title="BDialog Title"
-            dialogClass="w-[480px]"
+            dialog-class="w-[480px]"
           >
             <div>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -364,13 +390,199 @@
               voluptatibus qui nesciunt ipsum accusantium delectus?
             </div>
             <template slot="footer">
-              <BButton variant="ghost" @click="isDialogActive = false"
+              <BButton
+                variant="ghost"
+                class="w-full"
+                @click="isDialogActive = false"
                 >Cancel</BButton
               >
-              <BButton>Confirm</BButton>
+              <BButton class="w-full">Confirm</BButton>
             </template>
           </BDialog>
           <BButton @click="isDialogActive = true">Open Dialog</BButton>
+        </div>
+      </div>
+
+      <div slot="BPagination">
+        <h2 class="text-2xl mb-4">BPagination</h2>
+        <div class="">
+          <BPagination
+            :total="1000"
+            :page="page"
+            @change="(val) => (page = val)"
+          />
+        </div>
+      </div>
+
+      <div slot="BTable">
+        <h2 class="text-2xl mb-4">BTable</h2>
+        <div class="">
+          <BTable
+            :columns="table.columns"
+            :items="table.items"
+            :sort="table.sort"
+            :selectable="true"
+            @sort="sort"
+            @select="onSelectTableItem"
+          >
+            <div slot="table-select-header" class="flex items-center py-2">
+              <span class="font-normal">
+                {{ table.selected.length }} Produk Terpilih
+              </span>
+              <BButton
+                size="small"
+                class="w-auto px-4 py-1 ml-4"
+                variant="naked"
+                >Delete</BButton
+              >
+            </div>
+            <template slot="action">
+              <BButton
+                class="w-auto px-4 py-1 ml-4"
+                size="small"
+                variant="naked"
+                >Delete</BButton
+              >
+            </template>
+          </BTable>
+        </div>
+      </div>
+
+      <div slot="BRadio">
+        <h2 class="text-2xl mb-4">BRadio</h2>
+        <div class="">
+          <BRadio id="radio-1" v-model="radio" :value="1" label="One"
+            >One</BRadio
+          >
+          <BRadio id="radio-2" v-model="radio" :value="2" class="mt-2">
+            <span class="block">Two</span>
+            <span class="text-xs text-ui-shade-60 font-normal">with notes</span>
+          </BRadio>
+        </div>
+        <p>value: {{ radio }}</p>
+      </div>
+
+      <div slot="BImageUpload">
+        <h2 class="text-2xl mb-4">BImageUpload</h2>
+        <div class="">
+          <BImageUpload v-model="imageUpload" />
+          <p class="break-all">
+            value: {{ JSON.stringify(imageUpload).slice(0, 256) }}...
+          </p>
+        </div>
+      </div>
+
+      <div slot="BFileUpload">
+        <h2 class="text-2xl mb-4">BFileUpload</h2>
+        <div class="">
+          <BFileUpload v-model="fileUpload" class="mb-2" />
+          <p class="break-all">
+            value: {{ JSON.stringify(fileUpload).slice(0, 256) }}...
+          </p>
+        </div>
+      </div>
+
+      <div slot="BCapsule">
+        <h2 class="text-2xl mb-4">BCapsule</h2>
+        <div class="">
+          <BCapsule v-model="capsule" :options="['lorem', 'ipsum', 'dolor']" />
+        </div>
+      </div>
+
+      <div slot="BPopover">
+        <h2 class="text-2xl mb-4">BPopover</h2>
+        <div class="grid grid-cols-3 gap-4">
+          <BPopover label="On Click">
+            <div class="w-[280px]">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
+              dolorem adipisci neque in, quae ullam est voluptates pariatur
+              nesciunt saepe nemo dolorum enim molestiae, accusantium obcaecati
+              temporibus distinctio vero veniam.
+            </div>
+          </BPopover>
+
+          <BPopover label="On Hover" trigger="hover">
+            <div class="w-[280px]">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
+              dolorem adipisci neque in, quae ullam est voluptates pariatur
+              nesciunt saepe nemo dolorum enim molestiae, accusantium obcaecati
+              temporibus distinctio vero veniam.
+            </div>
+          </BPopover>
+
+          <BPopover position="right" trigger="hover">
+            <div
+              slot="label"
+              class="flex justify-center items-center gap-1 h-12 px-5 bg-ui-shade-0"
+            >
+              <IconEye /> Custom Label
+            </div>
+            <div class="w-[280px]">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
+              dolorem adipisci neque in, quae ullam est voluptates pariatur
+              nesciunt saepe nemo dolorum enim molestiae, accusantium obcaecati
+              temporibus distinctio vero veniam.
+            </div>
+          </BPopover>
+
+          <BPopover label="Position Left (default)" position="left">
+            <div class="w-[280px]">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
+              dolorem adipisci neque in, quae ullam est voluptates pariatur
+              nesciunt saepe nemo dolorum enim molestiae, accusantium obcaecati
+              temporibus distinctio vero veniam.
+            </div>
+          </BPopover>
+
+          <BPopover label="Position Center" position="center">
+            <div class="w-[280px]">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
+              dolorem adipisci neque in, quae ullam est voluptates pariatur
+              nesciunt saepe nemo dolorum enim molestiae, accusantium obcaecati
+              temporibus distinctio vero veniam.
+            </div>
+          </BPopover>
+
+          <BPopover label="Position Right" position="right">
+            <div class="w-[280px]">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
+              dolorem adipisci neque in, quae ullam est voluptates pariatur
+              nesciunt saepe nemo dolorum enim molestiae, accusantium obcaecati
+              temporibus distinctio vero veniam.
+            </div>
+          </BPopover>
+        </div>
+      </div>
+
+      <div slot="BInputRange">
+        <h2 class="text-2xl mb-4">BInputRange</h2>
+        <div class="">
+          <BInputRange v-model="inputRange" />
+        </div>
+      </div>
+
+      <div slot="BTag">
+        <h2 class="text-2xl mb-4">BTag</h2>
+        <div class="">
+          <BTag label="primary">default</BTag>
+          <BTag label="primary" variant="primary">primary</BTag>
+          <BTag label="primary" variant="naked">primary</BTag>
+        </div>
+      </div>
+
+      <div slot="BDatepicker">
+        <h2 class="text-2xl mb-4">BDatepicker</h2>
+        <div class="flex gap-4">
+          <div>
+            <BDatepicker v-model="date.single" />
+          </div>
+          <div>
+            <BDatepicker
+              v-model="date.range"
+              placeholder="Range Date"
+              :range="true"
+            />
+          </div>
         </div>
       </div>
 
@@ -391,32 +603,53 @@ import BTextarea from '../components/base/BTextarea.vue'
 import BSelect from '../components/base/BSelect.vue'
 import BCheckbox from '../components/base/BCheckbox.vue'
 import BSwitch from '../components/base/BSwitch.vue'
+import BRadio from '../components/base/BRadio.vue'
 import BField from '../components/base/BField.vue'
 import BTabs from '../components/base/BTabs.vue'
 import BDialog from '../components/base/BDialog.vue'
+import BPagination from '../components/base/BPagination.vue'
+import BTable from '../components/base/BTable.vue'
+import BImageUpload from '../components/base/BImageUpload.vue'
+import BFileUpload from '../components/base/BFileUpload.vue'
+import BCapsule from '../components/base/BCapsule.vue'
+import BPopover from '../components/base/BPopover.vue'
+import BInputRange from '../components/base/BInputRange.vue'
+import BTag from '../components/base/BTag.vue'
+import BDatepicker from '../components/base/BDatepicker.vue'
 
 import IconEye from '../components/icons/IconEye.vue'
 
 const components = {
+  BTextfield,
   BTextarea,
   BButton,
   BSelect,
   BCheckbox,
   BSwitch,
+  BRadio,
   BField,
-  BTabs,
   BDialog,
-  BTextfield,
+  BPagination,
+  BTable,
+  BTabs,
+  BImageUpload,
+  BFileUpload,
+  BCapsule,
+  BPopover,
+  BInputRange,
+  BTag,
+  BDatepicker,
 }
 
 export default {
-  layout: 'default',
   name: 'ComponentsPage',
   components: {
     ...components,
     IconEye,
   },
+  layout: 'default',
   data: () => ({
+    componentsList: Object.keys(components),
     value: null,
     number: 100000,
     number2: -100000,
@@ -425,11 +658,93 @@ export default {
     isDialogActive: false,
     checkboxValue: false,
     checkboxValue2: 'salah',
-    componentsList: Object.keys(components),
+    radio: 1,
+    page: 1,
+    fileUpload: null,
+    imageUpload: null,
+    capsule: null,
+    inputRange: null,
+    date: {
+      single: new Date(),
+      range: null,
+    },
+    table: {
+      columns: [
+        {
+          key: 'sku_id',
+          label: 'No SKU',
+          sortable: true,
+        },
+        {
+          key: 'name',
+          label: 'Nama Produk',
+          sortable: true,
+        },
+        {
+          key: 'category',
+          label: 'Kategori',
+          sortable: true,
+        },
+        {
+          key: 'price',
+          label: 'Harga',
+        },
+        {
+          key: 'stock',
+          label: 'Stok',
+          sortable: true,
+        },
+        {
+          key: 'status',
+          modifier: ({ value }) => (value ? 'Active' : 'Inactive'),
+        },
+        {
+          key: 'action',
+          label: 'Tindakan',
+        },
+      ],
+      items: [
+        {
+          sku_id: '12399347700001',
+          name: 'Kiat-kiat Menjadi Sultan',
+          category: 'Buku Sekolah',
+          price: 150000,
+          stock: 230,
+          status: true,
+        },
+        {
+          sku_id: '12399347700001',
+          name: 'Kiat-kiat Menjadi Sultan Jilid 2',
+          category: 'Buku Sekolah',
+          price: 150000,
+          stock: 230,
+          status: true,
+        },
+        {
+          sku_id: '12399347700001',
+          name: 'Kiat-kiat Menjadi Sultan Jilid 3',
+          category: 'Buku Sekolah',
+          price: 150000,
+          stock: 230,
+          status: true,
+        },
+      ],
+      sort: {
+        by: null,
+        asc: true,
+      },
+      selected: [],
+    },
   }),
   methods: {
     test(val) {
-      console.log(val)
+      alert(val)
+    },
+    sort(val) {
+      this.table.sort = { ...val }
+    },
+    onSelectTableItem(selectedIndexes) {
+      this.table.selected = selectedIndexes
     },
   },
 }
