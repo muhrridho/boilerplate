@@ -69,7 +69,7 @@ export default {
 <style lang="scss" scoped>
 .b-select {
   option {
-    @apply text-ui-black;
+    @apply text-ui-shade-100;
   }
   &:required:invalid {
     @apply text-ui-primary;

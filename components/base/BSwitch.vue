@@ -4,7 +4,7 @@
     :class="[_disabled && 'b-switch--disabled']"
   >
     <label
-      class="w-[42px] h-6 p-[2px] relative mr-2 border rounded-full overflow-hidden cursor-pointer transition-bg"
+      class="w-[42px] h-6 p-[2px] relative mr-2 rounded-full overflow-hidden cursor-pointer transition-bg"
       role="checkbox"
     >
       <input
@@ -19,7 +19,7 @@
         type="checkbox"
       />
       <span
-        class="switch-toggle left[3px] top[3px] absolute h-[18px] w-[18px] flex justify-center items-center rounded-full shadow-lg transition-all bg-white"
+        class="switch-toggle left-[3px] top-[3px] absolute h-[18px] w-[18px] flex justify-center items-center rounded-full shadow-lg transition-all bg-white"
         :class="[_disabled && 'cursor-not-allowed']"
       ></span>
     </label>

@@ -7,7 +7,7 @@
         :href="`${linkFormat.replace('##', translatePage(link.page))}`"
         :variant="link.active ? 'primary' : 'ghost'"
         :disabled="link.disabled === true"
-        :class="[link.disabled && '!bg-ui-white !border-0']"
+        :class="[link.disabled && '!bg-white !border-0']"
         size="smaller"
         class="!px-[11px]"
         @click.prevent="$emit('change', translatePage(link.page))"

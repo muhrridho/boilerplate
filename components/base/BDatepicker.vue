@@ -135,6 +135,6 @@ export default {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .mx-table th:first-child {
-  @apply text-ui-red;
+  @apply text-red;
 }
 </style>

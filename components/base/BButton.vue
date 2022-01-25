@@ -9,7 +9,7 @@
       size === 'large' && 'h-[48px]',
 
       variant === 'primary' &&
-        'border bg-ui-primary text-ui-white hover:bg-ui-primary-light active:bg-ui-primary-dark',
+        'border bg-ui-primary text-white hover:bg-ui-primary-light active:bg-ui-primary-dark',
       variant === 'primary-naked' &&
         'border border-ui-primary text-ui-primary active:border-ui-primary-light active:text-ui-primary-light hover:text-ui-primary-dark hover:border-ui-primary-dark',
       variant === 'naked' &&
@@ -29,7 +29,7 @@
     v-on="$listeners"
   >
     <div v-if="loading" class="flex justify-center py-px">
-      <IconSpinner class="animate-spin" />
+      <IconSpinner />
     </div>
     <slot v-else />
   </component>

@@ -586,6 +586,34 @@
         </div>
       </div>
 
+      <div slot="BPromised">
+        <h2 class="text-2xl mb-4">BPromised</h2>
+        <div class="flex flex-col gap-4">
+          <div>
+            <p>Promise pending:</p>
+            <BPromised
+              :promise="promise.pending"
+              @retry="retryPromise"
+            ></BPromised>
+          </div>
+          <div>
+            <p>Promise resolved:</p>
+            <BPromised :promise="promise.resolved" @retry="retryPromise">
+              <div class="text-center py-12 mb-12">
+                this content loaded after promise resolved
+              </div>
+            </BPromised>
+          </div>
+          <div>
+            <p>Promise rejected:</p>
+            <BPromised
+              :promise="promise.rejected"
+              @retry="retryPromise"
+            ></BPromised>
+          </div>
+        </div>
+      </div>
+
       <div slot="Template">
         <h2 class="text-2xl mb-4">Template</h2>
         <div class="">
@@ -616,6 +644,7 @@ import BPopover from '../components/base/BPopover.vue'
 import BInputRange from '../components/base/BInputRange.vue'
 import BTag from '../components/base/BTag.vue'
 import BDatepicker from '../components/base/BDatepicker.vue'
+import BPromised from '../components/base/BPromised.vue'
 
 import IconEye from '../components/icons/IconEye.vue'
 
@@ -639,6 +668,7 @@ const components = {
   BInputRange,
   BTag,
   BDatepicker,
+  BPromised,
 }
 
 export default {
@@ -664,6 +694,11 @@ export default {
     imageUpload: null,
     capsule: null,
     inputRange: null,
+    promise: {
+      pending: null,
+      resolved: null,
+      rejected: null,
+    },
     date: {
       single: new Date(),
       range: null,
@@ -736,6 +771,9 @@ export default {
       selected: [],
     },
   }),
+  created() {
+    this.retryPromise()
+  },
   methods: {
     test(val) {
       alert(val)
@@ -745,6 +783,17 @@ export default {
     },
     onSelectTableItem(selectedIndexes) {
       this.table.selected = selectedIndexes
+    },
+    retryPromise() {
+      this.promise.pending = new Promise((resolve) => {})
+      this.promise.resolved = new Promise((resolve) =>
+        setTimeout(() => resolve(), 1000)
+      )
+      // this.promise.resolved = this.$axios.$get('/users')
+      // this.promise.rejected = new Promise((resolve) => {})
+      this.promise.rejected = new Promise((resolve, reject) =>
+        setTimeout(() => reject(new Error('test')), 1000)
+      )
     },
   },
 }

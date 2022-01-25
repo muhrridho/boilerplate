@@ -2,7 +2,7 @@
   <div class="b-field" :class="[error && 'b-field--error']">
     <label v-if="label" :for="targetId" class="font-bold text-sm mb-1 block">
       {{ label }}
-      <span v-if="required" class="text-ui-red">*</span>
+      <span v-if="required" class="text-red">*</span>
     </label>
 
     <div v-if="hint" class="text-sm text-ui-shade-80 mb-1">
@@ -13,7 +13,7 @@
 
     <slot></slot>
 
-    <div v-if="error" class="text-sm text-ui-red mt-1">
+    <div v-if="error" class="text-sm text-ui-error mt-1">
       <slot name="error">
         {{ error }}
       </slot>
@@ -53,7 +53,7 @@ export default {
   .b-textfield input,
   .b-select,
   .b-textarea {
-    @apply border-ui-red;
+    @apply border-ui-error;
   }
 }
 </style>

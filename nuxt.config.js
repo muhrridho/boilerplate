@@ -26,9 +26,9 @@ export default {
   components: false,
 
   server: {
-    port: '3100',
+    port: process.env.PORT,
   },
-  ssr: false,
+  ssr: process.env.SSR === 'true',
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [

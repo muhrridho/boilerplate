@@ -4,7 +4,7 @@
   >
     <div
       v-if="isEmpty"
-      class="text-ui-white flex flex-col items-center justify-center absolute inset-0 cursor-pointer"
+      class="text-white flex flex-col items-center justify-center absolute inset-0 cursor-pointer"
       @click="$refs.input.click()"
     >
       <IconCamera />
@@ -26,9 +26,9 @@
       </button>
       <div
         v-if="_value.content.includes('application/pdf')"
-        class="text-ui-white flex flex-col items-center justify-center absolute inset-0 p-2 text-center"
+        class="text-white flex flex-col items-center justify-center absolute inset-0 p-2 text-center"
       >
-        <IconNote class="text-ui-white w-12 h-12" />
+        <IconNote class="text-white w-12 h-12" />
         <p
           class="text-xs leading-3 overflow-ellipsis overflow-hidden line-clamp-2 mt-4 break-all"
         >
