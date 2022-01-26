@@ -4,13 +4,15 @@
 
 <script>
 export default {
-  layout: 'default',
   name: 'IndexPage',
   components: {},
+  layout: 'default',
+  middleware: ['auth'],
   mounted() {
-    this.$axios.$get('/users').then((res) => {
-      console.log(res)
-    })
+    // this.$axios.$get('/users').then((res) => {
+    //   console.log(res)
+    // })
+    console.log(this.$cookies.get('user'))
   },
 }
 </script>
