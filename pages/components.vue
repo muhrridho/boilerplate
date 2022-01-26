@@ -16,37 +16,19 @@
             <p>type: text, size: large (default)</p>
           </div>
           <div>
-            <BTextfield
-              v-model="value"
-              placeholder="type: text"
-              size="medium"
-            />
+            <BTextfield v-model="value" placeholder="type: text" size="medium" />
             <p>type: text, size: medium</p>
           </div>
           <div>
-            <BTextfield
-              v-model="value"
-              placeholder="type: text"
-              type="text"
-              size="small"
-              disabled
-            />
+            <BTextfield v-model="value" placeholder="type: text" type="text" size="small" disabled />
             <p>size: small, disabled</p>
           </div>
           <div>
-            <BTextfield
-              v-model="value"
-              placeholder="type: password"
-              type="password"
-            />
+            <BTextfield v-model="value" placeholder="type: password" type="password" />
             <p>type: password</p>
           </div>
           <div>
-            <BTextfield
-              v-model="number"
-              placeholder="type: number"
-              type="number"
-            />
+            <BTextfield v-model="number" placeholder="type: number" type="number" />
             <p>type: number; value: {{ number }}</p>
           </div>
           <div>
@@ -59,21 +41,11 @@
             <p>number with allowNegative {{ number2 }}</p>
           </div>
           <div>
-            <BTextfield
-              v-model="value"
-              placeholder="type: text"
-              type="text"
-              prefix="Rp"
-            />
+            <BTextfield v-model="value" placeholder="type: text" type="text" prefix="Rp" />
             <p>with prefix</p>
           </div>
           <div>
-            <BTextfield
-              v-model="value"
-              placeholder="type: text"
-              type="text"
-              suffix="gram"
-            />
+            <BTextfield v-model="value" placeholder="type: text" type="text" suffix="gram" />
             <p>with suffix</p>
           </div>
           <div>
@@ -156,12 +128,7 @@
         <h2 class="text-2xl mb-4">BTextarea</h2>
         <div class="grid grid-cols-2 gap-4">
           <BTextarea v-model="value" placeholder="BTextarea" @change="test" />
-          <BTextarea
-            v-model="value"
-            placeholder="Disabled"
-            disabled
-            @change="test"
-          />
+          <BTextarea v-model="value" placeholder="Disabled" disabled @change="test" />
         </div>
       </div>
 
@@ -169,42 +136,23 @@
         <h2 class="text-2xl mb-4">BSelect</h2>
         <div class="grid grid-cols-3 gap-4">
           <div>
-            <BSelect
-              v-model="select"
-              :options="['1', '2', '3', 'asdf']"
-            ></BSelect>
+            <BSelect v-model="select" :options="['1', '2', '3', 'asdf']"></BSelect>
             <p>size: large (default), value: {{ select }}</p>
           </div>
           <div>
-            <BSelect
-              v-model="select"
-              :options="['1', '2', '3', 'asdf']"
-              size="medium"
-            ></BSelect>
+            <BSelect v-model="select" :options="['1', '2', '3', 'asdf']" size="medium"></BSelect>
             <p>size: medium, value: {{ select }}</p>
           </div>
           <div>
-            <BSelect
-              v-model="select"
-              :options="['1', '2', '3', 'asdf']"
-              size="small"
-            ></BSelect>
+            <BSelect v-model="select" :options="['1', '2', '3', 'asdf']" size="small"></BSelect>
             <p>size: small, value: {{ select }}</p>
           </div>
           <div>
-            <BSelect
-              v-model="select"
-              :options="['1', '2', '3', 'asdf']"
-              placeholder="placeholder"
-            ></BSelect>
+            <BSelect v-model="select" :options="['1', '2', '3', 'asdf']" placeholder="placeholder"></BSelect>
             <p>with placeholder</p>
           </div>
           <div>
-            <BSelect
-              v-model="select"
-              :options="['1', '2', '3', 'asdf']"
-              disabled
-            ></BSelect>
+            <BSelect v-model="select" :options="['1', '2', '3', 'asdf']" disabled></BSelect>
             <p>disabled</p>
           </div>
           <div>
@@ -225,31 +173,17 @@
         <h2 class="text-2xl mb-4">BCheckbox</h2>
         <div class="grid grid-cols-2 gap-4">
           <div>
-            <BCheckbox
-              id="checkbox-1"
-              v-model="checkboxValue"
-              label="BCheckbox Example"
-            />
+            <BCheckbox id="checkbox-1" v-model="checkboxValue" label="BCheckbox Example" />
             <p>value: {{ checkboxValue }}</p>
           </div>
           <div>
-            <BCheckbox
-              id="checkbox-2"
-              v-model="checkboxValue2"
-              true-value="benar"
-              false-value="salah"
-            >
+            <BCheckbox id="checkbox-2" v-model="checkboxValue2" true-value="benar" false-value="salah">
               With Custom true/false value
             </BCheckbox>
             <p>value: {{ checkboxValue2 }}</p>
           </div>
           <div>
-            <BCheckbox
-              id="checkbox-3"
-              v-model="checkboxValue"
-              label="BCheckbox Disabled"
-              disabled
-            />
+            <BCheckbox id="checkbox-3" v-model="checkboxValue" label="BCheckbox Disabled" disabled />
             <p>value: {{ checkboxValue }}</p>
           </div>
         </div>
@@ -259,31 +193,17 @@
         <h2 class="text-2xl mb-4">BSwitch</h2>
         <div class="grid grid-cols-2 gap-4">
           <div>
-            <BSwitch
-              id="checkbox-1"
-              v-model="checkboxValue"
-              label="BSwitch Example"
-            />
+            <BSwitch id="checkbox-1" v-model="checkboxValue" label="BSwitch Example" />
             <p>value: {{ checkboxValue }}</p>
           </div>
           <div>
-            <BSwitch
-              id="checkbox-2"
-              v-model="checkboxValue2"
-              true-value="benar"
-              false-value="salah"
-            >
+            <BSwitch id="checkbox-2" v-model="checkboxValue2" true-value="benar" false-value="salah">
               With Custom true/false value
             </BSwitch>
             <p>value: {{ checkboxValue2 }}</p>
           </div>
           <div>
-            <BSwitch
-              id="checkbox-3"
-              v-model="checkboxValue"
-              label="BSwitch Disabled"
-              disabled
-            />
+            <BSwitch id="checkbox-3" v-model="checkboxValue" label="BSwitch Disabled" disabled />
             <p>value: {{ checkboxValue }}</p>
           </div>
         </div>
@@ -294,57 +214,27 @@
         <div class="grid grid-cols-1 gap-4">
           <div>
             <BField label="Bfield" target-id="bfield-1">
-              <BTextfield
-                id="bfield-1"
-                v-model="value"
-                placeholder="lorem ipsum"
-                type="text"
-              />
+              <BTextfield id="bfield-1" v-model="value" placeholder="lorem ipsum" type="text" />
             </BField>
           </div>
 
           <div>
-            <BField
-              label="Bfield Required"
-              :required="true"
-              target-id="bfield-2"
-            >
-              <BTextfield
-                id="bfield-2"
-                v-model="value"
-                placeholder="lorem ipsum"
-                type="text"
-              />
+            <BField label="Bfield Required" :required="true" target-id="bfield-2">
+              <BTextfield id="bfield-2" v-model="value" placeholder="lorem ipsum" type="text" />
             </BField>
             <p>required: true</p>
           </div>
 
           <div>
-            <BField
-              label="Bfield Hint"
-              hint="this is a hint"
-              target-id="bfield-3"
-            >
-              <BTextarea
-                v-model="value"
-                placeholder="BTextarea"
-                @change="test"
-              />
+            <BField label="Bfield Hint" hint="this is a hint" target-id="bfield-3">
+              <BTextarea v-model="value" placeholder="BTextarea" @change="test" />
             </BField>
             <p>with hint</p>
           </div>
 
           <div>
-            <BField
-              label="Bfield Error"
-              error="this is an error message"
-              target-id="bfield-4"
-            >
-              <BSelect
-                v-model="select"
-                :options="['1', '2', '3']"
-                placeholder="Select"
-              ></BSelect>
+            <BField label="Bfield Error" error="this is an error message" target-id="bfield-4">
+              <BSelect v-model="select" :options="['1', '2', '3']" placeholder="Select"></BSelect>
             </BField>
             <p>with error message</p>
           </div>
@@ -363,11 +253,7 @@
           <div slot="Ipsum Dolor">Ipsum Dolor Content</div>
           <div slot="Sit Amet">Sit Amet Content</div>
         </BTabs>
-        <BTabs
-          :tabs="['Lorem', 'Ipsum Dolor', 'Sit Amet']"
-          active-tab="Ipsum Dolor"
-          class="mt-8"
-        >
+        <BTabs :tabs="['Lorem', 'Ipsum Dolor', 'Sit Amet']" active-tab="Ipsum Dolor" class="mt-8">
           <div slot="Lorem">Lorem Content</div>
           <div slot="Ipsum Dolor">Ipsum Dolor Content</div>
           <div slot="Sit Amet">Sit Amet Content</div>
@@ -377,25 +263,14 @@
       <div slot="BDialog">
         <h2 class="text-2xl mb-4">BDialog</h2>
         <div class="">
-          <BDialog
-            :active.sync="isDialogActive"
-            :close-button="true"
-            title="BDialog Title"
-            dialog-class="w-[480px]"
-          >
+          <BDialog :active.sync="isDialogActive" :close-button="true" title="BDialog Title" dialog-class="w-[480px]">
             <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Exercitationem necessitatibus consequatur et nihil asperiores,
-              fuga laudantium odio vitae. Sunt ad itaque at fugiat unde
-              voluptatibus qui nesciunt ipsum accusantium delectus?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem necessitatibus consequatur et
+              nihil asperiores, fuga laudantium odio vitae. Sunt ad itaque at fugiat unde voluptatibus qui nesciunt
+              ipsum accusantium delectus?
             </div>
             <template slot="footer">
-              <BButton
-                variant="ghost"
-                class="w-full"
-                @click="isDialogActive = false"
-                >Cancel</BButton
-              >
+              <BButton variant="ghost" class="w-full" @click="isDialogActive = false">Cancel</BButton>
               <BButton class="w-full">Confirm</BButton>
             </template>
           </BDialog>
@@ -406,11 +281,7 @@
       <div slot="BPagination">
         <h2 class="text-2xl mb-4">BPagination</h2>
         <div class="">
-          <BPagination
-            :total="1000"
-            :page="page"
-            @change="(val) => (page = val)"
-          />
+          <BPagination :total="1000" :page="page" @change="(val) => (page = val)" />
         </div>
       </div>
 
@@ -426,23 +297,11 @@
             @select="onSelectTableItem"
           >
             <div slot="table-select-header" class="flex items-center py-2">
-              <span class="font-normal">
-                {{ table.selected.length }} Produk Terpilih
-              </span>
-              <BButton
-                size="small"
-                class="w-auto px-4 py-1 ml-4"
-                variant="naked"
-                >Delete</BButton
-              >
+              <span class="font-normal"> {{ table.selected.length }} Produk Terpilih </span>
+              <BButton size="small" class="w-auto px-4 py-1 ml-4" variant="naked">Delete</BButton>
             </div>
             <template slot="action">
-              <BButton
-                class="w-auto px-4 py-1 ml-4"
-                size="small"
-                variant="naked"
-                >Delete</BButton
-              >
+              <BButton class="w-auto px-4 py-1 ml-4" size="small" variant="naked">Delete</BButton>
             </template>
           </BTable>
         </div>
@@ -451,9 +310,7 @@
       <div slot="BRadio">
         <h2 class="text-2xl mb-4">BRadio</h2>
         <div class="">
-          <BRadio id="radio-1" v-model="radio" :value="1" label="One"
-            >One</BRadio
-          >
+          <BRadio id="radio-1" v-model="radio" :value="1" label="One">One</BRadio>
           <BRadio id="radio-2" v-model="radio" :value="2" class="mt-2">
             <span class="block">Two</span>
             <span class="text-xs text-ui-shade-60 font-normal">with notes</span>
@@ -466,9 +323,7 @@
         <h2 class="text-2xl mb-4">BImageUpload</h2>
         <div class="">
           <BImageUpload v-model="imageUpload" />
-          <p class="break-all">
-            value: {{ JSON.stringify(imageUpload).slice(0, 256) }}...
-          </p>
+          <p class="break-all">value: {{ JSON.stringify(imageUpload).slice(0, 256) }}...</p>
         </div>
       </div>
 
@@ -476,9 +331,7 @@
         <h2 class="text-2xl mb-4">BFileUpload</h2>
         <div class="">
           <BFileUpload v-model="fileUpload" class="mb-2" />
-          <p class="break-all">
-            value: {{ JSON.stringify(fileUpload).slice(0, 256) }}...
-          </p>
+          <p class="break-all">value: {{ JSON.stringify(fileUpload).slice(0, 256) }}...</p>
         </div>
       </div>
 
@@ -494,61 +347,52 @@
         <div class="grid grid-cols-3 gap-4">
           <BPopover label="On Click">
             <div class="w-[280px]">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-              dolorem adipisci neque in, quae ullam est voluptates pariatur
-              nesciunt saepe nemo dolorum enim molestiae, accusantium obcaecati
-              temporibus distinctio vero veniam.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dolorem adipisci neque in, quae ullam est
+              voluptates pariatur nesciunt saepe nemo dolorum enim molestiae, accusantium obcaecati temporibus
+              distinctio vero veniam.
             </div>
           </BPopover>
 
           <BPopover label="On Hover" trigger="hover">
             <div class="w-[280px]">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-              dolorem adipisci neque in, quae ullam est voluptates pariatur
-              nesciunt saepe nemo dolorum enim molestiae, accusantium obcaecati
-              temporibus distinctio vero veniam.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dolorem adipisci neque in, quae ullam est
+              voluptates pariatur nesciunt saepe nemo dolorum enim molestiae, accusantium obcaecati temporibus
+              distinctio vero veniam.
             </div>
           </BPopover>
 
           <BPopover position="right" trigger="hover">
-            <div
-              slot="label"
-              class="flex justify-center items-center gap-1 h-12 px-5 bg-ui-shade-0"
-            >
+            <div slot="label" class="flex justify-center items-center gap-1 h-12 px-5 bg-ui-shade-0">
               <IconEye /> Custom Label
             </div>
             <div class="w-[280px]">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-              dolorem adipisci neque in, quae ullam est voluptates pariatur
-              nesciunt saepe nemo dolorum enim molestiae, accusantium obcaecati
-              temporibus distinctio vero veniam.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dolorem adipisci neque in, quae ullam est
+              voluptates pariatur nesciunt saepe nemo dolorum enim molestiae, accusantium obcaecati temporibus
+              distinctio vero veniam.
             </div>
           </BPopover>
 
           <BPopover label="Position Left (default)" position="left">
             <div class="w-[280px]">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-              dolorem adipisci neque in, quae ullam est voluptates pariatur
-              nesciunt saepe nemo dolorum enim molestiae, accusantium obcaecati
-              temporibus distinctio vero veniam.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dolorem adipisci neque in, quae ullam est
+              voluptates pariatur nesciunt saepe nemo dolorum enim molestiae, accusantium obcaecati temporibus
+              distinctio vero veniam.
             </div>
           </BPopover>
 
           <BPopover label="Position Center" position="center">
             <div class="w-[280px]">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-              dolorem adipisci neque in, quae ullam est voluptates pariatur
-              nesciunt saepe nemo dolorum enim molestiae, accusantium obcaecati
-              temporibus distinctio vero veniam.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dolorem adipisci neque in, quae ullam est
+              voluptates pariatur nesciunt saepe nemo dolorum enim molestiae, accusantium obcaecati temporibus
+              distinctio vero veniam.
             </div>
           </BPopover>
 
           <BPopover label="Position Right" position="right">
             <div class="w-[280px]">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-              dolorem adipisci neque in, quae ullam est voluptates pariatur
-              nesciunt saepe nemo dolorum enim molestiae, accusantium obcaecati
-              temporibus distinctio vero veniam.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam dolorem adipisci neque in, quae ullam est
+              voluptates pariatur nesciunt saepe nemo dolorum enim molestiae, accusantium obcaecati temporibus
+              distinctio vero veniam.
             </div>
           </BPopover>
         </div>
@@ -577,11 +421,7 @@
             <BDatepicker v-model="date.single" />
           </div>
           <div>
-            <BDatepicker
-              v-model="date.range"
-              placeholder="Range Date"
-              :range="true"
-            />
+            <BDatepicker v-model="date.range" placeholder="Range Date" :range="true" />
           </div>
         </div>
       </div>
@@ -591,25 +431,19 @@
         <div class="flex flex-col gap-4">
           <div>
             <p>Promise pending:</p>
-            <BPromised
-              :promise="promise.pending"
-              @retry="retryPromise"
-            ></BPromised>
+            <BPromised :promise="promise.pending" @retry="retryPromise"></BPromised>
           </div>
           <div>
             <p>Promise resolved:</p>
-            <BPromised :promise="promise.resolved" @retry="retryPromise">
-              <div class="text-center py-12 mb-12">
-                this content loaded after promise resolved
+            <BPromised :promise="promise.resolved" :scoped="true" @retry="retryPromise">
+              <div slot-scope="{ data }" class="text-center py-12 mb-12">
+                {{ data }}
               </div>
             </BPromised>
           </div>
           <div>
             <p>Promise rejected:</p>
-            <BPromised
-              :promise="promise.rejected"
-              @retry="retryPromise"
-            ></BPromised>
+            <BPromised :promise="promise.rejected" @retry="retryPromise"></BPromised>
           </div>
         </div>
       </div>
@@ -787,13 +621,9 @@ export default {
     retryPromise() {
       this.promise.pending = new Promise((resolve) => {})
       this.promise.resolved = new Promise((resolve) =>
-        setTimeout(() => resolve(), 1000)
+        setTimeout(() => resolve({ data: 'this content loaded after promise resolved' }), 1000)
       )
-      // this.promise.resolved = this.$axios.$get('/users')
-      // this.promise.rejected = new Promise((resolve) => {})
-      this.promise.rejected = new Promise((resolve, reject) =>
-        setTimeout(() => reject(new Error('test')), 1000)
-      )
+      this.promise.rejected = new Promise((resolve, reject) => setTimeout(() => reject(new Error('test')), 1200))
     },
   },
 }
