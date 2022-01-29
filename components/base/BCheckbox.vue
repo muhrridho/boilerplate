@@ -10,9 +10,7 @@
       type="checkbox"
       class="w-[18px] h-[18px] mt-[3px] text-ui-primary rounded-sm border-2 border-ui-shade-40 focus:ring-ui-primary cursor-pointer"
       :class="[
-        _disabled &&
-          !_checked &&
-          '!text-ui-shade-20 !bg-ui-shade-20 !cursor-not-allowed',
+        _disabled && !_checked && '!text-ui-shade-20 !bg-ui-shade-20 !cursor-not-allowed',
         _disabled && _checked && '!text-ui-shade-40',
       ]"
     />
@@ -20,7 +18,7 @@
       v-if="label || $slots.default"
       :for="id"
       :class="[_disabled && '!cursor-not-allowed text-ui-shade-80']"
-      class="ml-2 cursor-pointer heading-tight"
+      class="ml-3 cursor-pointer heading-tight"
     >
       <slot>
         {{ label }}

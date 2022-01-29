@@ -29,6 +29,7 @@ module.exports = {
         success: '#23baa6',
         warning: '#ffc144',
         error: '#fc4158',
+        yellow: '#f8b053',
       },
     },
     extend: {

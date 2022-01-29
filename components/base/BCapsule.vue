@@ -4,7 +4,7 @@
       v-for="(option, i) in options"
       :key="`capsule-${i}`"
       :variant="_value === getValue(option) ? 'primary-naked' : 'naked'"
-      size="small"
+      :size="size"
       class="rounded-full border-2 font-normal"
       @click="onClick(option)"
       >{{ getValue(option) }}</BButton
@@ -26,6 +26,11 @@ export default {
     value: {
       type: [Number, String, Boolean],
       default: null,
+    },
+    size: {
+      type: String,
+      default: 'medium',
+      validator: (value) => ['smaller', 'small', 'medium', 'large'].includes(value),
     },
     options: {
       type: Array,
@@ -51,10 +56,7 @@ export default {
   },
   methods: {
     onClick(option) {
-      this._value =
-        this._value === this.getValue(option) && !this._required
-          ? null
-          : this.getValue(option)
+      this._value = this._value === this.getValue(option) && !this._required ? null : this.getValue(option)
     },
     getValue(option) {
       return typeof option === 'object' ? option.key : option

@@ -7,18 +7,8 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
   >
-    <g
-      id="Page-1"
-      stroke="none"
-      stroke-width="1"
-      fill="none"
-      fill-rule="evenodd"
-    >
-      <polygon
-        id="Min"
-        fill="currentColor"
-        points="0 0 10.144 0 10.144 4.384 0 4.384"
-      ></polygon>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <polygon id="Min" fill="currentColor" points="0 0 10.144 0 10.144 4.384 0 4.384"></polygon>
     </g>
   </svg>
 </template>

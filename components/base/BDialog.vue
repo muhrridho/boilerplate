@@ -1,13 +1,7 @@
 <template>
-  <div
-    v-if="active"
-    class="b-dialog fixed inset-0 flex items-center justify-center z-50"
-  >
+  <div v-if="active" class="b-dialog fixed inset-0 flex items-center justify-center z-50">
     <div class="fixed inset-0 bg-black opacity-40 z-40" @click="hide"></div>
-    <div
-      class="relative bg-white m-4 z-50 p-6 rounded-2xl max-h-[90vh] max-w-[90%] overflow-auto"
-      :class="dialogClass"
-    >
+    <div class="relative bg-white m-4 z-50 p-6 rounded-2xl max-h-[90vh] max-w-[90%] overflow-auto" :class="dialogClass">
       <div v-if="title || closeButton" class="relative my-4 text-ui-shade-80">
         <h4 class="text-2xl text-center font-bold">
           {{ title }}
@@ -29,8 +23,8 @@ import IconClose from '../icons/IconClose.vue'
 
 export default {
   name: 'BDialog',
-  inheritAttrs: false,
   components: { IconClose },
+  inheritAttrs: false,
   props: {
     active: {
       type: Boolean,

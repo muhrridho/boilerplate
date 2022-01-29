@@ -3,7 +3,7 @@
     <div
       v-if="prefix || $slots.prefix"
       ref="prefix"
-      class="absolute inset-y-0 px-3 pt-[1px] left-0 flex items-center justify-center font-bold"
+      class="absolute inset-y-0 px-3 pt-[1px] left-0 flex items-center justify-center font-medium"
     >
       <slot name="prefix">{{ prefix }}</slot>
     </div>
@@ -26,17 +26,11 @@
     <div
       v-if="suffix || $slots.suffix || type === 'password'"
       ref="suffix"
-      class="absolute inset-y-0 px-3 right-0 flex items-center justify-center font-bold"
+      class="absolute inset-y-0 px-3 right-0 flex items-center justify-center font-medium"
     >
-      <button
-        v-if="type === 'password'"
-        @click="isPasswordRevealed = !isPasswordRevealed"
-      >
+      <button v-if="type === 'password'" @click.prevent="isPasswordRevealed = !isPasswordRevealed">
         <IconEye
-          :class="[
-            isPasswordRevealed && 'text-ui-primary',
-            !isPasswordRevealed && 'text-ui-shade-40',
-          ]"
+          :class="[isPasswordRevealed && 'text-ui-primary', !isPasswordRevealed && 'text-ui-shade-40']"
           class="ml-1 cursor-pointer"
         />
       </button>
@@ -104,9 +98,7 @@ export default {
       },
     },
     _type() {
-      return this.type === 'number' || this.isPasswordRevealed
-        ? 'text'
-        : this.type
+      return this.type === 'number' || this.isPasswordRevealed ? 'text' : this.type
     },
     _disabled() {
       return 'disabled' in this.$attrs && this.$attrs.disabled !== false
@@ -122,14 +114,10 @@ export default {
   },
   mounted() {
     if (this.$slots.prefix || this.prefix) {
-      this.$refs.inputElm.style.paddingLeft = `${
-        this.$refs.prefix.clientWidth - 8
-      }px`
+      this.$refs.inputElm.style.paddingLeft = `${this.$refs.prefix.clientWidth - 8}px`
     }
     if (this.$slots.suffix || this.suffix || this.type === 'password') {
-      this.$refs.inputElm.style.paddingRight = `${
-        this.$refs.suffix.clientWidth - 8
-      }px`
+      this.$refs.inputElm.style.paddingRight = `${this.$refs.suffix.clientWidth - 8}px`
     }
   },
   methods: {
@@ -146,9 +134,7 @@ export default {
         }
 
         const numericValue = this.replaceNonNumeric(val)
-        const value = `${numericValue}`
-          ? Number(numericValue) || 0
-          : numericValue
+        const value = `${numericValue}` ? Number(numericValue) || 0 : numericValue
         this.$emit('change', value)
       }
       this.$forceUpdate()
@@ -158,9 +144,7 @@ export default {
     },
     delimiter(val) {
       if (val === '-') return '-'
-      return val
-        ? new Intl.NumberFormat('id').format(this.replaceNonNumeric(val))
-        : val
+      return val ? new Intl.NumberFormat('id').format(this.replaceNonNumeric(val)) : val
     },
   },
 }

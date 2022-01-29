@@ -8,13 +8,7 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
   >
     <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
-    <g
-      id="Page-1"
-      stroke="none"
-      stroke-width="1"
-      fill="none"
-      fill-rule="evenodd"
-    >
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
       <g id="Sort_Des" fill-rule="nonzero">
         <path
           id="Shape"

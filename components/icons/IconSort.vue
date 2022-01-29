@@ -8,15 +8,8 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
   >
     <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
-    <g
-      id="Page-1"
-      stroke="none"
-      stroke-width="1"
-      fill="none"
-      fill-rule="evenodd"
-      fill-opacity="0.38"
-    >
-      <g id="Sort_Default" fill="#666666" fill-rule="nonzero">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="1">
+      <g id="Sort_Default" fill="currentColor" fill-rule="nonzero">
         <path
           id="Shape"
           d="M4.27112314,0.111413205 C4.12262175,-0.0371377349 3.87737825,-0.0371377349 3.7289414,0.111413205 L0.114826662,3.72830565 C-0.130416838,3.97380222 0.0438351224,4.38709677 0.385885267,4.38709677 L7.61411473,4.38709677 C7.95616488,4.38709677 8.13041684,3.97380222 7.88517334,3.72830565 L4.27112314,0.111413205 Z"

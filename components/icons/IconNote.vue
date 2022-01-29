@@ -7,13 +7,7 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
   >
-    <g
-      id="Page-1"
-      stroke="none"
-      stroke-width="1"
-      fill="none"
-      fill-rule="evenodd"
-    >
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
       <g id="Catatan" transform="translate(-1.000000, 0.000000)">
         <rect id="Rectangle-3" x="0" y="0" width="12" height="12"></rect>
         <g

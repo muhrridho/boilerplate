@@ -2,9 +2,7 @@
   <table class="table-auto w-full">
     <thead>
       <tr class="border-b-2 border-ui-shade-40" :class="headClass">
-        <template
-          v-if="!selectedIndex.length || !$slots['table-select-header']"
-        >
+        <template v-if="!selectedIndex.length || !$slots['table-select-header']">
           <th
             v-for="column in normalizedColumns"
             :key="column.key"
@@ -45,31 +43,19 @@
               @change="(val) => select(-1, val)"
             />
           </th>
-          <th
-            class="px-3 text-left text-ui-shade-60"
-            :colspan="normalizedColumns.length - 1"
-          >
+          <th class="px-3 text-left text-ui-shade-60" :colspan="normalizedColumns.length - 1">
             <slot name="table-select-header"> </slot>
           </th>
         </template>
       </tr>
     </thead>
     <tbody class="border-0">
-      <tr
-        v-for="(item, i) in items"
-        :key="i"
-        class="border-b text-sm text-ui-shade-60 align-top"
-        :class="trClass"
-      >
+      <tr v-for="(item, i) in items" :key="i" class="border-b text-sm text-ui-shade-60 align-top" :class="trClass">
         <td
           v-for="column in normalizedColumns"
           :key="`${column.key}${i}`"
           class="px-3 py-4 text-left"
-          :class="
-            column.key === 'table-select'
-              ? [...getTdClasses(column), 'pr-0']
-              : getTdClasses(column)
-          "
+          :class="column.key === 'table-select' ? [...getTdClasses(column), 'pr-0'] : getTdClasses(column)"
         >
           <BCheckbox
             v-if="column.key === 'table-select'"
@@ -78,13 +64,7 @@
             :value="selectedIndex.includes(i)"
             @change="(val) => select(i, val)"
           />
-          <slot
-            v-else
-            :name="column.key"
-            :index="i"
-            :item="item"
-            :value="getValue(column, item)"
-          >
+          <slot v-else :name="column.key" :index="i" :item="item" :value="getValue(column, item)">
             {{ getValue(column, item) }}
           </slot>
         </td>
@@ -179,9 +159,7 @@ export default {
   }),
   computed: {
     normalizedColumns() {
-      const columns = this.columns.map((col) =>
-        typeof col === 'string' ? { key: col } : col
-      )
+      const columns = this.columns.map((col) => (typeof col === 'string' ? { key: col } : col))
       return this.selectable ? [{ key: 'table-select' }, ...columns] : columns
     },
   },
@@ -201,16 +179,9 @@ export default {
   },
   methods: {
     getTdClasses(column) {
-      const classes =
-        typeof this.tdClass === 'string'
-          ? this.tdClass.split(' ')
-          : [...this.tdClass]
+      const classes = typeof this.tdClass === 'string' ? this.tdClass.split(' ') : [...this.tdClass]
       if (column.class) {
-        classes.push(
-          typeof column.class === 'string'
-            ? column.class.split(' ')
-            : [...column.class]
-        )
+        classes.push(typeof column.class === 'string' ? column.class.split(' ') : [...column.class])
       }
       return classes
     },

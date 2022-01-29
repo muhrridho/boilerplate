@@ -1,16 +1,13 @@
 <template>
-  <div
-    class="b-switch flex items-center h-12"
-    :class="[_disabled && 'b-switch--disabled']"
-  >
+  <div class="b-switch flex items-center h-12" :class="[_disabled && 'b-switch--disabled']">
     <label
       class="w-[42px] h-6 p-[2px] relative mr-2 rounded-full overflow-hidden cursor-pointer transition-bg"
       role="checkbox"
     >
       <input
-        v-model="_value"
         v-bind="$attrs"
         :id="id"
+        v-model="_value"
         :disabled="_disabled"
         :true-value="trueValue"
         :false-value="falseValue"

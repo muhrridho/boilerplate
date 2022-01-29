@@ -1,24 +1,7 @@
 <template>
-  <svg
-    viewBox="0 0 16 16"
-    version="1.1"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-  >
-    <g
-      id="Page-1"
-      stroke="none"
-      stroke-width="1"
-      fill="none"
-      fill-rule="evenodd"
-      fill-opacity="1"
-    >
-      <g
-        id="Upload2"
-        transform="translate(0.500000, 0.500000)"
-        fill="currentColor"
-        fill-rule="nonzero"
-      >
+  <svg viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="1">
+      <g id="Upload2" transform="translate(0.500000, 0.500000)" fill="currentColor" fill-rule="nonzero">
         <path
           id="Shape"
           d="M11.7298242,3.65642578 L15,3.65642578 L11.2906641,0 L11.2906641,3.21697266 C11.2906641,3.45928711 11.4876562,3.65642578 11.7298242,3.65642578 Z"

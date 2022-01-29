@@ -3,34 +3,18 @@
     class="b-file-upload bg-ui-shade-0 p-8 h-[240px] flex flex-col items-center justify-center rounded overflow-hidden border border-dashed border-ui-shade-60"
   >
     <div class="flex gap-2 items-center">
-      <IconFileUpload
-        class="text-ui-primary"
-        :class="[isEmpty && 'w-16 h-16', !isEmpty && 'w-8 h-8']"
-      />
+      <IconFileUpload class="text-ui-primary" :class="[isEmpty && 'w-16 h-16', !isEmpty && 'w-8 h-8']" />
       <p v-if="!isEmpty" class="font-medium break-all">{{ _value.name }}</p>
     </div>
-    <p
-      v-if="description || $slots.description"
-      class="mt-6 text-sm text-ui-shade-60"
-    >
+    <p v-if="description || $slots.description" class="mt-6 text-sm text-ui-shade-60">
       <slot name="description">
         {{ description }}
       </slot>
     </p>
-    <BButton
-      variant="naked"
-      size="small"
-      class="w-[240px] bg-white mt-2"
-      @click="$refs.input.click()"
-      >{{ isEmpty ? 'Pilih File' : 'Ubah File' }}</BButton
-    >
-    <input
-      ref="input"
-      class="hidden"
-      type="file"
-      :accept="accept"
-      @change="onChange"
-    />
+    <BButton variant="naked" size="small" class="w-[240px] bg-white mt-2" @click="$refs.input.click()">{{
+      isEmpty ? 'Pilih File' : 'Ubah File'
+    }}</BButton>
+    <input ref="input" class="hidden" type="file" :accept="accept" @change="onChange" />
   </div>
 </template>
 

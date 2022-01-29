@@ -12,6 +12,7 @@ module.exports = {
   plugins: [],
   // add your custom rules here
   rules: {
-    'max-len': ['error', { code: 120 }],
+    // 'max-len': ['error', { code: 120 }],
+    'max-len': 'off',
   },
 }

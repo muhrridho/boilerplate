@@ -1,28 +1,24 @@
 <template>
-  <div
-    ref="wrapper"
-    class="BPopover relative w-fit-content"
-    @mouseleave="onMouseLeave"
-    @mouseenter="onMouseEnter"
-  >
-    <div @click="onClick">
-      <slot name="label">
-        <BButton
-          :variant="active ? 'primary-naked' : 'naked'"
-          class="rounded-full font-normal"
-          >{{ label }}</BButton
-        >
+  <div ref="wrapper" class="BPopover relative" @mouseleave="onMouseLeave" @mouseenter="onMouseEnter">
+    <div v-if="label || $slots.label || $slots['label-button']" ref="label" @click="onClick">
+      <slot name="label" @click.prevent="onClick">
+        <BButton :variant="active ? 'primary-naked' : 'naked'" class="rounded-full font-normal">
+          <slot name="label-button">
+            {{ label }}
+          </slot>
+        </BButton>
       </slot>
     </div>
     <transition name="fade-dropdown">
       <div
-        v-if="active"
-        class="absolute bg-white p-4 rounded-xl z-20 mt-2 shadow-ui transition duration-100 ease-in-out"
-        :class="{
-          'translate-x-1/2 right-1/2': position === 'center',
-          'left-0': position === 'left',
-          'right-0': position === 'right',
-        }"
+        v-if="active && $slots.default"
+        class="absolute bg-white rounded-xl z-20 mt-2 shadow-ui transition duration-100 ease-in-out"
+        :class="[
+          position === 'center' && 'translate-x-1/2 right-1/2',
+          position === 'left' && 'left-0',
+          position === 'right' && 'right-0',
+          ...contentClass,
+        ]"
       >
         <slot></slot>
       </div>
@@ -54,6 +50,14 @@ export default {
     delay: {
       type: Number,
       default: 200,
+    },
+    contentClass: {
+      type: Array,
+      default: () => [],
+    },
+    closeOnClick: {
+      type: Boolean,
+      default: true,
     },
   },
   data: () => ({
@@ -87,9 +91,11 @@ export default {
     onClick() {
       if (this.trigger === 'click') this.open()
     },
-    onClieckOutside(e) {
-      if (!this.$refs.wrapper.contains(e.target)) {
-        this.close()
+    onClickOutside(e) {
+      const labelClicked = this.$refs.label && !this.$refs.label.contains(e.target)
+
+      if ((!this.$refs.wrapper.contains(e.target) || this.closeOnClick) && (labelClicked || !this.$refs.label)) {
+        setTimeout(this.close, 100)
       }
     },
     onMouseEnter() {
@@ -107,10 +113,10 @@ export default {
       }
     },
     addEventListener() {
-      document.addEventListener('click', this.onClieckOutside)
+      document.addEventListener('mousedown', this.onClickOutside)
     },
     clearEventListener() {
-      document.removeEventListener('click', this.onClieckOutside)
+      document.removeEventListener('mousedown', this.onClickOutside)
     },
   },
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="b-field" :class="[error && 'b-field--error']">
-    <label v-if="label" :for="targetId" class="font-bold text-sm mb-1 block">
+    <label v-if="label" :for="targetId" class="font-medium text-sm mb-1 block">
       {{ label }}
       <span v-if="required" class="text-red">*</span>
     </label>

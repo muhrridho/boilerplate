@@ -9,13 +9,7 @@
     >
       <IconCamera />
       <span class="text-xs pt-1">Tambah</span>
-      <input
-        ref="input"
-        class="hidden"
-        type="file"
-        :accept="accept"
-        @change="onChange"
-      />
+      <input ref="input" class="hidden" type="file" :accept="accept" @change="onChange" />
     </div>
     <template v-else>
       <button
@@ -29,17 +23,11 @@
         class="text-white flex flex-col items-center justify-center absolute inset-0 p-2 text-center"
       >
         <IconNote class="text-white w-12 h-12" />
-        <p
-          class="text-xs leading-3 overflow-ellipsis overflow-hidden line-clamp-2 mt-4 break-all"
-        >
+        <p class="text-xs leading-3 overflow-ellipsis overflow-hidden line-clamp-2 mt-4 break-all">
           {{ _value.name }}
         </p>
       </div>
-      <img
-        v-else
-        :src="value.content"
-        class="absolute inset-0 object-cover w-full h-full"
-      />
+      <img v-else :src="value.content" class="absolute inset-0 object-cover w-full h-full" />
     </template>
   </div>
 </template>
@@ -128,8 +116,7 @@ export default {
           img.src = this._value?.content
           const vm = this
           img.onload = function () {
-            if (this.mustSquare && this.width !== this.height)
-              vm.$emit('not-square')
+            if (this.mustSquare && this.width !== this.height) vm.$emit('not-square')
           }
 
           this._value = data

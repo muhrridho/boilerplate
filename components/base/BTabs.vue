@@ -1,9 +1,6 @@
 <template>
   <div class="b-tab flex" :class="[isVertical && 'flex-col']">
-    <ul
-      class="b-tab__menu"
-      :class="[isVertical && 'flex border-b-2 border-ui-shade-40']"
-    >
+    <ul class="b-tab__menu" :class="[isVertical && 'flex border-b-2 border-ui-shade-40']">
       <li
         v-for="tab in tabs"
         :key="`menu-${kebabCase(tab)}`"
@@ -14,8 +11,7 @@
           :href="`#${kebabCase(tab)}`"
           :class="[
             isActive(tab) && '!text-ui-primary',
-            isVertical &&
-              'px-10 border-b-[3px] border-transparent mb-[-2px] text-center',
+            isVertical && 'px-10 border-b-[3px] border-transparent mb-[-2px] text-center',
             isVertical && isActive(tab) && 'text-ui-primary border-ui-primary',
             ...menuClass,
           ]"
@@ -84,8 +80,7 @@ export default {
     },
   },
   mounted() {
-    if (this.withHash && window.location.hash)
-      this.vmActiveTab = `${window.location.hash}`.replace('#', '')
+    if (this.withHash && window.location.hash) this.vmActiveTab = `${window.location.hash}`.replace('#', '')
   },
   methods: {
     isActive(tab) {

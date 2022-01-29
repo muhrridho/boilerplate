@@ -1,33 +1,38 @@
 <template>
-  <div class="b-promised">
-    <slot v-if="state === 'pending'" name="pending">
-      <div class="flex justify-center items-center px-4 py-16">
-        <IconSpinner class="w-10 h-10 text-ui-shade-80" />
-      </div>
-    </slot>
-    <slot v-else-if="state === 'rejected'" name="rejected">
-      <div class="flex flex-col justify-center items-center px-4 py-16 gap-4">
-        <p class="text-ui-shade-80">{{ errorMessage }}</p>
-        <BButton size="small" variant="naked" @click="$emit('retry')">Coba Lagi</BButton>
-      </div>
-    </slot>
-    <slot v-else-if="state === 'resolved'" :data="(response || {}).data" :meta="(response || {}).meta"></slot>
-  </div>
+  <BStateWrapper
+    class="b-promised"
+    :state="_state"
+    :error-message="errorMessage"
+    :empty-message="emptyMessage"
+    @retry="$emit('retry')"
+  >
+    <template v-if="_state === 'loading' && $slots.loading" slot="loading">
+      <slot name="loading"></slot>
+    </template>
+    <template v-if="_state === 'error' && $slots.error" slot="error">
+      <slot name="error"></slot>
+    </template>
+    <template v-if="_state === 'empty' && $slots.empty" slot="empty">
+      <slot name="empty"></slot>
+    </template>
+    <template v-if="_state === 'success'">
+      <slot :data="(response || {}).data" :meta="(response || {}).meta"> </slot>
+    </template>
+  </BStateWrapper>
 </template>
 
 <script>
-import IconSpinner from '../icons/IconSpinner.vue'
-import BButton from './BButton.vue'
+import BStateWrapper from './BStateWrapper.vue'
 
 export default {
   name: 'BPromised',
   components: {
-    IconSpinner,
-    BButton,
+    BStateWrapper,
   },
   props: {
+    /* eslint-disable-next-line */
     promise: {
-      type: [Promise, Object],
+      // type: [Promise, Object
       required: true,
     },
     errorHandler: {
@@ -45,37 +50,53 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    isEmpty: {
+      type: Boolean,
+      default: null,
+    },
+    emptyMessage: {
+      type: String,
+      default: 'Data tidak ditemukan',
+    },
   },
   data: () => ({
-    state: 'pending',
+    state: 'loading',
     response: null,
     errorMessage: null,
   }),
+  computed: {
+    _isEmpty() {
+      return this.isEmpty === null ? this.scoped && !this.response?.data?.length : this.isEmpty
+    },
+    _state() {
+      return this.state === 'success' ? (this._isEmpty ? 'empty' : this.state) : this.state
+    },
+  },
   watch: {
     promise: {
       handler() {
         this.init()
       },
-      // deep: true,
       immediate: true,
     },
   },
   methods: {
     init() {
-      this.state = 'pending'
+      this.state = 'loading'
       this.response = null
       this.errorMessage = null
 
       this.promise
         .then((response) => {
-          this.state = 'resolved'
+          this.state = 'success'
           if (this.scoped) this.response = response
-          this.$emit('resolved', response)
+          this.$emit('success', response)
         })
         .catch((error) => {
           this.errorMessage = this.errorHandler(error) || this.defaultErrorMessage
-          this.state = 'rejected'
-          this.$emit('rejected', error)
+          this.state = 'error'
+          this.$emit('error', error)
         })
     },
   },

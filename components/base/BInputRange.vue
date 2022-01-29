@@ -11,14 +11,8 @@
     </BButton>
     <BTextfield
       v-model="val"
-      :allowNegative="this.min < 0"
-      :input-class="[
-        'min-w-[20px]',
-        'text-center',
-        '!rounded-full',
-        'w-20',
-        ...inputClass,
-      ]"
+      :allow-negative="min < 0"
+      :input-class="['min-w-[20px]', 'text-center', '!rounded-full', 'w-20', ...inputClass]"
       :size="size"
       type="number"
     />
@@ -76,11 +70,9 @@ export default {
   computed: {
     val: {
       set(val) {
-        if ((this.max || this.max === 0) && val > this.max)
-          this.$emit('change', this.max)
+        if ((this.max || this.max === 0) && val > this.max) this.$emit('change', this.max)
         // else if (((this.min || this.min === 0) && val < this.min) || !this.min)
-        else if (val < this.min && this.min !== null)
-          this.$emit('change', this.min || 0)
+        else if (val < this.min && this.min !== null) this.$emit('change', this.min || 0)
         else this.$emit('change', val)
       },
       get() {
